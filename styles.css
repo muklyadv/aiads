@@ -1,0 +1,138 @@
+body {
+    font-family: 'Inter', sans-serif;
+    background: #0f172a;
+    color: #e2e8f0;
+}
+
+.gradient-text {
+    background: linear-gradient(90deg, #3B82F6, #8B5CF6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.floating-text {
+    text-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    transform: translateY(-5px);
+    transition: transform 0.3s ease;
+}
+
+.floating-text:hover {
+    transform: translateY(-8px);
+}
+
+.card-hover {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: #1e293b;
+}
+
+.card-hover:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.bg-pattern {
+    background-image: radial-gradient(circle at 1px 1px, #334155 1px, transparent 0);
+    background-size: 40px 40px;
+    background-color: #0f172a;
+}
+
+.section-bg {
+    background-color: #0f172a;
+}
+
+.card-bg {
+    background-color: #1e293b;
+}
+
+.text-muted {
+    color: #94a3b8;
+} 
+
+/* Modal Overlay and Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(30, 30, 30, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.ugc-modal {
+  background: #fff;
+  width: 70vw;
+  height: 70vh;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+  padding: 32px 24px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  color: #222;
+}
+
+#ugc-modal-close {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.ugc-modal-close-btn {
+  position: absolute;
+  top: 0.75vh;
+  right: 14vw;
+  z-index: 1100;
+  width: 44px;
+  height: 44px;
+  background: #fff !important;
+  color: #222;
+  border: none;
+  border-radius: 50%;
+  font-size: 2rem;
+  font-weight: bold;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, box-shadow 0.15s;
+}
+.ugc-modal-close-btn:hover {
+  background: #f1f5f9;
+  color: #1e293b;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+}
+
+@media (max-width: 900px) {
+  .ugc-modal {
+    width: 95vw;
+    height: 90vh;
+    padding: 16px 6px;
+  }
+  .ugc-modal-close-btn {
+    right: 2vw;
+    top: 0.6vh;
+  }
+}
+
+@keyframes scaleIn {
+  0% {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.scale-in {
+  animation: scaleIn 0.25s cubic-bezier(0.4,0,0.2,1);
+} 

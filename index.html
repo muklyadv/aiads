@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scale your SaaS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body class="min-h-screen">
+    <!-- Modal Overlay and UGC Request Form Popup -->
+    <div id="ugc-modal-overlay" class="modal-overlay" style="display:none;">
+      <button type="button" id="ugc-modal-close" class="ugc-modal-close-btn" aria-label="Close">&times;</button>
+      <div class="ugc-modal">
+        <form id="ugc-request-form" class="space-y-6">
+          <h2 class="text-3xl font-bold mb-4">UGC Request - Raw Submission</h2>
+          <div class="flex flex-col md:flex-row gap-4">
+            <div class="flex-1">
+              <label class="block font-semibold mb-1">Which email should we send the videos to? <span style="color:red">*required</span></label>
+              <input type="email" required placeholder="name@example.com" class="w-full border rounded px-3 py-2" />
+            </div>
+            <div class="flex-1">
+              <label class="block font-semibold mb-1">Product link: <span style="color:red">*required</span></label>
+              <input type="url" required placeholder="https://derch.co" class="w-full border rounded px-3 py-2" />
+            </div>
+          </div>
+          <div>
+            <label class="block font-semibold mb-1">Info dump about the product (features, use cases, offer, tone, audience, etc):</label>
+            <textarea class="w-full border rounded px-3 py-2" rows="5" placeholder="Keep it raw and poorly punctuated. Copy paste from landing pages, pitch decks, sales scripts etc."></textarea>
+          </div>
+          <div>
+            <label class="block font-semibold mb-1">Some UGC video styles that you like:</label>
+            <textarea class="w-full border rounded px-3 py-2" rows="3" placeholder="Paste as many links as you want of videos whose visuals, scripts, angles or overall style that you liked."></textarea>
+          </div>
+          <div>
+            <label class="block font-semibold mb-1">Top performing competitor video links</label>
+            <textarea class="w-full border rounded px-3 py-2" rows="3" placeholder="Paste as many links as you want"></textarea>
+          </div>
+          <div class="flex justify-between items-center mt-6">
+            <button id="ugc-form-submit" type="submit" class="bg-blue-600 text-white px-6 py-2 rounded font-semibold hover:bg-blue-700">Start pilot test</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- End Modal -->
+
+    <!-- Hero Section -->
+    <section class="min-h-[90vh] flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 bg-pattern relative overflow-hidden">
+        <div class="w-full max-w-6xl mx-auto text-center flex flex-col items-center z-10">
+            <div class="text-3xl sm:text-4xl md:text-5xl font-semibold mb-4 text-blue-200 tracking-tight" style="letter-spacing: -0.02em;">
+                Get Paying Users Fast
+            </div>
+            <div class="text-5xl sm:text-6xl md:text-7xl font-extrabold text-transparent bg-gradient-to-r from-blue-200 to-blue-500 bg-clip-text mb-10 tracking-tight leading-tight" style="letter-spacing: -0.03em;">
+                Find message-market fit<br>by testing AI UGC creatives
+            </div>
+            <div class="flex flex-col sm:flex-row gap-4 mt-2 w-full justify-center">
+                <button id="open-ugc-modal" class="bg-blue-700 text-white px-10 py-5 rounded-2xl text-2xl font-bold shadow-lg hover:bg-blue-800 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-400/40 border border-blue-600">
+                    Pilot test with 50 videos for $750
+                </button>
+                <button id="open-ugc-modal-samples" class="bg-white/90 text-blue-800 px-8 py-5 rounded-2xl text-xl font-semibold shadow hover:bg-blue-50 border border-blue-300 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-400/40">
+                    or get 5 samples for $75
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Demo Section -->
+    <section class="px-4 sm:px-6 lg:px-8 section-bg -mt-8 mb-20">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Video placeholders - TikTok size (9:16 aspect ratio) -->
+                <div class="w-[350px] h-[622px] rounded-lg card-hover shadow-lg mx-auto relative overflow-hidden transform hover:scale-105 transition-all duration-300">
+                    <iframe 
+                        src="https://drive.google.com/file/d/1jCTOXyRCj-SXTCJAnPOgvTrS_NURiyDj/preview" 
+                        class="w-full h-full"
+                        allow="autoplay"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                <div class="w-[350px] h-[622px] rounded-lg card-hover shadow-lg mx-auto relative overflow-hidden transform hover:scale-105 transition-all duration-300">
+                    <iframe 
+                        src="https://drive.google.com/file/d/1MuWSICe0KhiYdkJEFn-kxpvyZozKj7Fq/preview" 
+                        class="w-full h-full"
+                        allow="autoplay"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                <div class="w-[350px] h-[622px] rounded-lg card-hover shadow-lg mx-auto relative overflow-hidden transform hover:scale-105 transition-all duration-300">
+                    <iframe 
+                        src="https://drive.google.com/file/d/1osuzQU-qiCciSfs4VyTgjxDpsqKVy_vP/preview" 
+                        class="w-full h-full"
+                        allow="autoplay"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+
+    <!-- How It Works Section -->
+    <section class="py-20 px-4 sm:px-6 lg:px-8 section-bg">
+        <div class="max-w-6xl mx-auto">
+            <blockquote class="text-center italic text-2xl md:text-3xl font-normal text-blue-100 leading-snug max-w-5xl mx-auto mb-12">
+                For B2C SaaS teams spending <span class="text-blue-300 font-bold">$5k+/mo</span> on top-of-funnel marketing and still looking for messaging that makes their target audience buy.
+            </blockquote>
+            <div class="space-y-8">
+                <div class="flex items-start gap-8 card-hover p-8 rounded-xl shadow-lg bg-blue-900/20 transform hover:scale-105 transition-all duration-300">
+                    <div class="flex-shrink-0 w-16 h-16 bg-blue-900 rounded-full flex items-center justify-center">
+                        <span class="text-blue-400 font-bold text-2xl">1</span>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-semibold mb-3 text-white">Fill Out the Form</h3>
+                        <p class="text-muted text-lg">Tell us about your product and audience to give us enough info to create videos that make people buy.</p>
+                    </div>
+                </div>
+
+                <div class="flex items-start gap-8 card-hover p-8 rounded-xl shadow-lg bg-blue-900/20 transform hover:scale-105 transition-all duration-300">
+                    <div class="flex-shrink-0 w-16 h-16 bg-blue-900 rounded-full flex items-center justify-center">
+                        <span class="text-blue-400 font-bold text-2xl">2</span>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-semibold mb-3 text-white">Test 50 Videos in 3 days</h3>
+                        <p class="text-muted text-lg">Run a small scale test using 50 videos to evaluate performance, service quality and the potential for scaling message testing.</p>
+                    </div>
+                </div>
+
+                <div class="flex items-start gap-8 card-hover p-8 rounded-xl shadow-lg bg-blue-900/20 transform hover:scale-105 transition-all duration-300">
+                    <div class="flex-shrink-0 w-16 h-16 bg-blue-900 rounded-full flex items-center justify-center">
+                        <span class="text-blue-400 font-bold text-2xl">3</span>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-semibold mb-3 text-white">Scale to 450+ Videos/Month</h3>
+                        <p class="text-muted text-lg">If the results show promise, ramp up testing and find message-market fit in 90 days.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why This Works Section -->
+    <section class="py-20 px-4 sm:px-6 lg:px-8 section-bg">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl font-bold mb-8 floating-text text-white text-center">Why This Works</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="card-hover p-8 rounded-xl shadow-lg bg-blue-900/20 transform hover:scale-105 transition-all duration-300 border border-blue-400/20">
+                    <h3 class="text-2xl font-semibold mb-4 text-blue-400">Find message–market fit fast</h3>
+                    <p class="text-blue-200/80">Test hundreds of messaging angles quickly to discover what resonates with your audience.</p>
+                </div>
+
+                <div class="card-hover p-8 rounded-xl shadow-lg bg-blue-900/20 transform hover:scale-105 transition-all duration-300 border border-blue-400/20">
+                    <h3 class="text-2xl font-semibold mb-4 text-blue-400">Top-of-funnel experimentation at scale</h3>
+                    <p class="text-blue-200/80">Systematically test different hooks, offers, and messaging without creative constraints.</p>
+                </div>
+
+                <div class="card-hover p-8 rounded-xl shadow-lg bg-blue-900/20 transform hover:scale-105 transition-all duration-300 border border-blue-400/20">
+                    <h3 class="text-2xl font-semibold mb-4 text-blue-400">Consistent content velocity without bottlenecks</h3>
+                    <p class="text-blue-200/80">Generate consistent, high-quality content without waiting for creative resources.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-20 px-4 sm:px-6 lg:px-8 section-bg">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-12 floating-text text-white">Frequently Asked Question</h2>
+            <div class="space-y-8">
+                        <div class="card-hover p-6 rounded-xl shadow-lg bg-blue-900/20 transform hover:scale-105 transition-all duration-300">
+                            <h3 class="text-xl font-semibold mb-2 text-white">Can I choose the scripts, style, and visuals?</h3>
+                            <p class="text-muted">Yes, you have full creative control. The onboarding form covers product details, audience, tone, references, and style. There's also space to add anything specific you want.<br><br>After onboarding, we'll send 5 sample videos first. If you have feedback, we will refine the style, then produce the remaining 45 accordingly.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 bg-gray-900 text-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-gray-400">© 2024 AI UGC Video Generation. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <style>
+      @keyframes gradient-x {
+        0%, 100% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+      }
+      .animate-gradient-x {
+        background-size: 200% 200%;
+        animation: gradient-x 2s linear infinite;
+      }
+
+        /* Tab connection animation */
+        #onboarding-tab {
+            margin-bottom: 0;
+            transition: margin-bottom 0.3s ease;
+        }
+
+        #onboarding-tab:hover {
+            margin-bottom: 1.5px;
+        }
+
+        #onboarding-content {
+            margin-top: 1.5px;
+            transition: margin-top 0.3s ease;
+        }
+
+        #onboarding-tab:hover + #onboarding-content {
+            margin-top: 0;
+      }
+    </style>
+
+    <script>
+        // Custom smooth scroll function for slower scroll
+        function smoothScrollTo(targetId, duration) {
+            const target = document.querySelector(targetId);
+            if (!target) return;
+
+            const startPosition = window.pageYOffset;
+            const targetPosition = target.getBoundingClientRect().top + window.pageYOffset;
+            const distance = targetPosition - startPosition;
+            let startTime = null;
+
+            function animation(currentTime) {
+                if (startTime === null) startTime = currentTime;
+                const timeElapsed = currentTime - startTime;
+                const run = easeInOutQuad(timeElapsed, startPosition, distance, duration);
+                window.scrollTo(0, run);
+                if (timeElapsed < duration) requestAnimationFrame(animation);
+            }
+
+            // Easing function for smoother animation (Quadratic easing)
+            function easeInOutQuad(t, b, c, d) {
+                t /= d / 2;
+                if (t < 1) return c / 2 * t * t + b;
+                t--;
+                return -c / 2 * (t * (t - 2) - 1) + b;
+            }
+
+            requestAnimationFrame(animation);
+        }
+
+        // Onboarding steps logic (no pricing card)
+        const onboardingSection = document.getElementById('onboarding-section');
+        const onboardingSteps = document.getElementById('onboarding-steps');
+        // Multi-step onboarding form logic
+        const steps = Array.from(document.querySelectorAll('.onboarding-step'));
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const progressBar = document.getElementById('progress-bar');
+        const progressText = document.getElementById('progress-text');
+        let currentStep = 0;
+        const totalSteps = steps.length;
+        function showStep(idx) {
+            steps.forEach((step, i) => {
+                step.classList.toggle('hidden', i !== idx);
+            });
+            progressBar.style.width = `${((idx + 1) / totalSteps) * 100}%`;
+            progressText.textContent = `Step ${idx + 1} of ${totalSteps}`;
+            prevBtn.disabled = idx === 0;
+            nextBtn.textContent = idx === totalSteps - 1 ? 'Finish' : 'Next';
+        }
+        if (prevBtn && nextBtn) {
+            prevBtn.addEventListener('click', () => {
+                if (currentStep > 0) {
+                    currentStep--;
+                    showStep(currentStep);
+                }
+            });
+            nextBtn.addEventListener('click', () => {
+                if (currentStep < totalSteps - 1) {
+                    currentStep++;
+                    showStep(currentStep);
+                } else {
+                    document.getElementById('onboarding-form').submit();
+                }
+            });
+            // Show the first step initially if steps are visible
+            if (!onboardingSteps.classList.contains('hidden')) {
+                showStep(currentStep);
+            }
+        }
+
+        // Add event listener to the hero CTA button for custom smooth scrolling
+        const heroCtaButton = document.getElementById('hero-cta-button');
+        if (heroCtaButton) {
+            heroCtaButton.addEventListener('click', function(e) {
+                e.preventDefault(); // Prevent default anchor jump
+                if (onboardingSection) {
+                    onboardingSection.classList.remove('hidden');
+                    // Wait for the section to be visible before scrolling
+                    setTimeout(() => {
+                        const targetId = this.getAttribute('href');
+                        smoothScrollTo(targetId, 1000);
+                    }, 10);
+                }
+                if (onboardingSteps) {
+                    currentStep = 0;
+                    showStep(currentStep);
+                }
+            });
+        }
+
+        // Modal open/close logic
+        document.addEventListener('DOMContentLoaded', function() {
+          var openBtn = document.getElementById('open-ugc-modal');
+          var openSamplesBtn = document.getElementById('open-ugc-modal-samples');
+          var modal = document.getElementById('ugc-modal-overlay');
+          var closeBtn = document.getElementById('ugc-modal-close');
+          var modalBox = document.querySelector('.ugc-modal');
+          var formSubmitBtn = document.getElementById('ugc-form-submit');
+          function closeModal() {
+            modal.style.display = 'none';
+            if (modalBox) modalBox.classList.remove('scale-in');
+          }
+          function openModal(type) {
+            modal.style.display = 'flex';
+            if (modalBox) {
+              modalBox.classList.remove('scale-in');
+              // Force reflow to restart animation
+              void modalBox.offsetWidth;
+              modalBox.classList.add('scale-in');
+            }
+            if (formSubmitBtn) {
+              if (type === 'samples') {
+                formSubmitBtn.textContent = 'Get 5 samples';
+              } else {
+                formSubmitBtn.textContent = 'Start pilot test';
+              }
+            }
+          }
+          if (openBtn && modal) {
+            openBtn.addEventListener('click', function() { openModal('pilot'); });
+          }
+          if (openSamplesBtn && modal) {
+            openSamplesBtn.addEventListener('click', function(e) {
+              e.preventDefault();
+              openModal('samples');
+            });
+          }
+          if (closeBtn && modal) {
+            closeBtn.addEventListener('click', closeModal);
+          }
+          if (closeBtnTop && modal) {
+            closeBtnTop.addEventListener('click', closeModal);
+          }
+          // Optional: close modal on overlay click
+          modal && modal.addEventListener('click', function(e) {
+            if (e.target === modal) closeModal();
+          });
+        });
+    </script>
+</body>
+</html>
