@@ -84,54 +84,242 @@ body {
     margin-bottom: 120px;
 }
 
-/*video showcase */
-.video-showcase-section {
-  padding: 64px 0 32px;
-  background: white;
+/* --- Social Trust Carousel Section --- */
+.social-trust-section {
+    padding: 150px 0 80px;
+    background-color: #fff;
 }
 
-.video-portrait-row {
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  gap: 32px;
-  margin-bottom: 40px;
+.carousel-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
 }
 
-.video-placeholder.portrait {
-  width: 400px;
-  height: 648px;
-  background: #eef2f7;
-  border-radius: 16px;
-  border: 1.5px dashed #c7d2fe;
-  overflow: hidden;
-  display: flex;
-  align-items: stretch;
-  justify-content: stretch;
-  padding: 0;
-}
-.video-placeholder.portrait iframe {
-  width: 100%;
-  height: 100%;
-  border: none;
-  object-fit: cover;
+.carousel-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
-.video-landscape-row {
-  display: flex;
-  justify-content: center;
+.carousel-heading {
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 16px;
+    transition: all 0.3s ease;
 }
 
-.video-placeholder.landscape {
-  width: 100%;
-  max-width: 100%;
-  aspect-ratio: 16 / 9;
-  background: #eef2f7;
-  border-radius: 12px;
-  border: 1.5px dashed #c7d2fe;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.carousel-subtext {
+    font-size: 18px;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.carousel-controls {
+    display: flex;
+    gap: 15px;
+}
+
+.carousel-arrow {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.carousel-arrow:hover {
+    background-color: #f0f0f0;
+}
+
+.carousel-arrow:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+    background-color: #f8f8f8;
+}
+
+.carousel-arrow svg {
+    fill: #333;
+}
+
+.carousel-viewport {
+    overflow: hidden;
+    width: 100%;
+}
+
+.carousel-slides-container {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-slide {
+    flex: 0 0 100%;
+    box-sizing: border-box;
+    padding: 0 10px; /* Creates a small gap between cards if needed */
+}
+
+.testimonial-card {
+    padding: 40px;
+    border-radius: 16px;
+    height: 100%;
+    min-height: 350px;
+    display: flex;
+    flex-direction: column;
+}
+
+.testimonial-card.bright-green {
+    background-color: #e5fbeB;
+}
+
+.testimonial-card.forest-green {
+    background-color: #dcf1e7;
+}
+
+.testimonial-avatar {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 24px;
+}
+
+.testimonial-card h4 {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.5;
+    margin-bottom: auto; /* Pushes the name to the bottom */
+    padding-bottom: 20px;
+}
+
+.testimonial-card p {
+    font-size: 16px;
+    margin: 0;
+}
+
+@media (max-width: 900px) {
+    .carousel-grid {
+        grid-template-columns: 1fr;
+    }
+    .carousel-content {
+        order: 2;
+        text-align: center;
+        align-items: center;
+    }
+}
+
+/* --- Veo 3.1 Video Carousel Section (CORRECTED) --- */
+.veo-carousel-section {
+    padding: 250px 0;
+    background-color: #ffffff;
+    text-align: center;
+    width: 100%; /* Take up the full width of its parent */
+    max-width: 100%; /* Ensure it does not overflow */
+    overflow: hidden; /* Hide horizontal overflow */
+}
+
+.veo-carousel {
+    position: relative;
+    max-width: 100%;
+}
+
+.veo-slides-container {
+    display: flex;
+    justify-content: flex-start; /* Start from the left */
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    padding: 0 15px;
+    gap: 20px;
+    cursor: grab;
+    scrollbar-width: none; /* Hide scrollbar for Firefox */
+}
+.veo-slides-container::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for Chrome, Safari, Opera */
+}
+.veo-slides-container.active {
+    cursor: grabbing;
+}
+
+.veo-slide {
+    flex: 0 0 70%;
+    scroll-snap-align: center;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    opacity: 0.4;
+    transform: scale(0.85);
+}
+
+.veo-slide:first-child {
+    margin-left: calc((100% - 70%) / 2); /* Center the first slide */
+}
+
+.veo-slide:last-child {
+    margin-right: calc((100% - 70%) / 2); /* Provide space after the last slide */
+}
+
+.veo-slide.is-in-view {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.veo-video-wrapper {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.veo-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.veo-dots {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 40px;
+}
+
+.veo-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: none;
+    background-color: #ccc;
+    cursor: pointer;
+    padding: 0;
+    transition: background-color 0.3s ease;
+}
+
+.veo-dot.active {
+    background-color: #1a73e8;
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+    .veo-slide {
+        flex-basis: 80%;
+    }
+    .veo-slide:first-child {
+        margin-left: calc((100% - 80%) / 2);
+    }
+    .veo-slide:last-child {
+        margin-right: calc((100% - 80%) / 2);
+    }
+    .veo-slides-container {
+        padding: 0 10px;
+    }
 }
 
 /* How to get started */
@@ -692,4 +880,104 @@ body {
 .hero-actions .btn-primary:hover { 
     transform: translateY(-2px); 
     filter: brightness(0.95);
+}
+
+/* --- Wise Platform Section --- */
+.wise-platform-section {
+    padding: 80px 0;
+    background-color: #ffffff;
+}
+
+.wise-platform-section h2 {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 40px;
+    max-width: 600px;
+}
+
+.feature-tabs .tab-triggers {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.feature-tabs .tab-trigger {
+    padding: 10px 20px;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    font-size: 18px;
+    font-weight: 600;
+    color: #6c757d;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.feature-tabs .tab-trigger.active {
+    color: #0d6efd;
+    border-bottom-color: #0d6efd;
+}
+
+.feature-tabs .tab-content {
+    display: none;
+}
+
+.feature-tabs .tab-content.active {
+    display: block;
+}
+
+.tab-content-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+}
+
+.tab-text h3 {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.tab-text p {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.tab-text ul {
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 30px;
+}
+
+.tab-text ul li {
+    font-size: 16px;
+    margin-bottom: 10px;
+    padding-left: 30px;
+    position: relative;
+}
+
+.tab-text ul li::before {
+    content: '✔';
+    color: #28a745;
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+}
+
+.tab-media img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+}
+
+@media (max-width: 900px) {
+    .tab-content-inner {
+        grid-template-columns: 1fr;
+    }
+    .tab-media {
+        order: -1;
+        margin-bottom: 30px;
+    }
 }
